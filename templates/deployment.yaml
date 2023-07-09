@@ -8,6 +8,9 @@ spec:
   template:
     spec:
       restartPolicy: {{ .Values.restartPolicy }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector: {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- if .Values.volumes }}
       volumes: {{ toYaml .Values.volumes | nindent 8 }}
       {{- end }}
@@ -17,10 +20,6 @@ spec:
 {{- end -}}
 
 {{- define "web.container" -}}
-{{- with .Values.nodeSelector }}
-nodeSelector:
-  {{- toYaml . | nindent 2 }}
-{{- end }}
 envFrom:
 - configMapRef:
     name: {{ template "common.fullname" . }}
