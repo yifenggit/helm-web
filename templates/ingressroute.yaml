@@ -1,0 +1,15 @@
+{{- if .Values.ingressroute.enabled }}
+  {{- range $item := .Values.ingressroute.specs }}
+    {{- $overrides := fromYaml (include "web.ingressroute" (dict "item" $item "global" $)) | default (dict ) -}}
+    {{- $tpl := fromYaml (include "common.ingressroute.tpl" $) | default (dict ) -}}
+    {{- toYaml (merge $overrides $tpl) }}
+---
+  {{- end }}
+{{- end }}
+
+{{- define "web.ingressroute" }}
+{{- $tpl := toYaml .item.spec }}
+metadata:
+  name: {{ .item.name }}
+spec: {{ tpl $tpl .global | nindent 2}}
+{{- end }}

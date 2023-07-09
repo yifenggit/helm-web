@@ -1,0 +1,7 @@
+{{- if .Values.middleware.enabled }}
+{{- include "common.middleware" (list . "web.middleware") -}}
+{{- end }}
+
+{{- define "web.middleware" -}}
+spec: {{ toYaml .Values.middleware.spec | nindent 2 }}
+{{- end -}}
