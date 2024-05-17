@@ -40,7 +40,7 @@ middleware:
       permanent: true
 
 ingressroute:
-  enabled: true
+  enabled: false
   specs:
   - name: "www-weyundong-com-http"
     spec:
