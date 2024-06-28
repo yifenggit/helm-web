@@ -14,15 +14,15 @@ nameOverride: "www-weyundong-com"
 fullnameOverride: "www-weyundong-com"
 restartPolicy: Always
 
-volumes:
-- name: html
-  hostPath:
-    path: /home/jensen/deploy/www.weyundong.com/data
-    type: DirectoryOrCreate
+volumes: {}
+# - name: html
+#   hostPath:
+#     path: /home/jensen/deploy/www.weyundong.com/data
+#     type: DirectoryOrCreate
 
-volumeMounts:
-- name: html
-  mountPath: /usr/share/nginx/html 
+volumeMounts: {}
+# - name: html
+#   mountPath: /usr/share/nginx/html 
 
 secret:
   enabled: false
@@ -34,39 +34,39 @@ service:
 
 middleware:
   enabled: false
-  spec:
-    redirectScheme:
-      scheme: https
-      port: "443"
-      permanent: true
+  # spec:
+  #   redirectScheme:
+  #     scheme: https
+  #     port: "443"
+  #     permanent: true
 
 ingressroute:
   enabled: false
-  specs:
-  - name: "www-weyundong-com-http"
-    spec:
-      entryPoints: 
-      - web
-      routes:
-      - kind: Rule
-        match: Host(`www.weyundong.com`)
-        middlewares:
-        - name: '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
-        services:
-        - name:  '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
-          port: 80
-  - name: "www-weyundong-com-https"
-    spec:
-      entryPoints: 
-      - websecure
-      tls:
-        secretName: '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
-      routes:
-      - kind: Rule
-        match: Host(`www.weyundong.com`)
-        services:
-        - name:  '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
-          port: 80
+  # specs:
+  # - name: "www-weyundong-com-http"
+  #   spec:
+  #     entryPoints: 
+  #     - web
+  #     routes:
+  #     - kind: Rule
+  #       match: Host(`www.weyundong.com`)
+  #       middlewares:
+  #       - name: '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
+  #       services:
+  #       - name:  '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
+  #         port: 80
+  # - name: "www-weyundong-com-https"
+  #   spec:
+  #     entryPoints: 
+  #     - websecure
+  #     tls:
+  #       secretName: '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
+  #     routes:
+  #     - kind: Rule
+  #       match: Host(`www.weyundong.com`)
+  #       services:
+  #       - name:  '{{ default "www-weyundong-com" .Values.fullnameOverride }}'
+  #         port: 80
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
