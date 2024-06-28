@@ -25,6 +25,7 @@ volumeMounts:
   mountPath: /usr/share/nginx/html 
 
 secret:
+  enabled: false
   data:
 
 service:
@@ -32,7 +33,7 @@ service:
   port: 80
 
 middleware:
-  enabled: true
+  enabled: false
   spec:
     redirectScheme:
       scheme: https
