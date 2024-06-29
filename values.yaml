@@ -29,8 +29,10 @@ secret:
   data:
 
 service:
+  enabled: true
   type: ClusterIP
   port: 80
+  targetPort: http
 
 middleware:
   enabled: false

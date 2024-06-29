@@ -1,1 +1,3 @@
+{{- if .Values.service.enabled }}
 {{- include "common.service.tpl" . -}}
+{{- end }}
