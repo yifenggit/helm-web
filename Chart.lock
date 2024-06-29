@@ -1,6 +1,6 @@
 dependencies:
 - name: common
   repository: https://helm-oci.oss-cn-chengdu.aliyuncs.com/common/
-  version: 0.1.2
-digest: sha256:c49a3aca634dc7aae0984f8e83febd89d07601a81fc5837521a0354565d10a73
-generated: "2023-07-10T01:55:59.677895+08:00"
+  version: 0.1.1
+digest: sha256:9c09263ab6ad0979668f69dfae81f601d9fbed16ca40b342d3dfd4987ad6af88
+generated: "2024-06-29T22:47:17.241061+08:00"
